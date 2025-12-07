@@ -1,0 +1,22 @@
+# Datasets
+data/
+datasets/
+images/
+predictions/
+runs/
+
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.h5
+*.pb
+
+# Jupyter notebook junk
+*.ipynb_checkpoints/
+*.checkpoint
+
+# Cache / temp
+__pycache__/
+*.cache/
+*.tmp
