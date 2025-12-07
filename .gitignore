@@ -6,7 +6,6 @@ predictions/
 runs/
 
 # Model weights
-*.pt
 *.pth
 *.onnx
 *.h5
