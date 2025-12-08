@@ -155,7 +155,7 @@ class RPSCustomSolver:
         self._assign_hands_to_players()
         
         if len(self.opponent_hands) < 2 or len(self.my_hands) < 2:
-            return f"⚠️ Error: Model detected {len(self.opponent_hands)} opponent hand(s) and {len(self.my_hands)} of your hand(s). Need two of each for the game."
+            return f"Error: Model detected {len(self.opponent_hands)} opponent hand(s) and {len(self.my_hands)} of your hand(s). Need two of each for the game."
 
         # Convert detected Hands into lists of gesture strings
         my_gesture_names = [self.gesture_names[h.gesture_id] for h in self.my_hands]
@@ -179,15 +179,15 @@ class RPSCustomSolver:
         
 
         if hand_to_remove_side is None:
-             return f"⚠️ Logic Error: Could not find the physical hand matching the required removal gesture: **{gesture_to_remove}**"
+             return f"Logic Error: Could not find the physical hand matching the required removal gesture: **{gesture_to_remove}**"
 
         # 3. Formulate the final instruction
         result_message = (
             f"\n--- Game Analysis ---\n"
-            f"Your hands: **{my_gesture_names[0].capitalize()}** (Left), **{my_gesture_names[1].capitalize()}** (Right)\n"
-            f"Opponent's hands: **{opp_gesture_names[0].capitalize()}**, **{opp_gesture_names[1].capitalize()}**\n"
-            f"Custom Logic Determined Remove: **{gesture_to_remove.capitalize()}**\n"
-            f"✅ **ACTION: REMOVE your {hand_to_remove_side} hand.**"
+            f"Your hands: {my_gesture_names[0].capitalize()} (Left), {my_gesture_names[1].capitalize()} (Right)\n"
+            f"Opponent's hands: {opp_gesture_names[0].capitalize()}, {opp_gesture_names[1].capitalize()}\n"
+            f"Custom Logic Determined Remove: {gesture_to_remove.capitalize()}\n"
+            f"ACTION: REMOVE your {hand_to_remove_side} hand."
         )
         
         return result_message
@@ -204,7 +204,7 @@ def main():
     hands = detect_hands(args.image_path, YOLO_MODEL_PATH, GESTURE_ID_MAP)
 
     if not hands:
-        print("❌ No hands were detected in the image, or the model failed to load.")
+        print("No hands were detected in the image, or the model failed to load.")
         return
 
     # 2. Solve the game
